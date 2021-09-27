@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'style/clipboard.css' %}">
+        <link rel="stylesheet" href="{% static 'style/icono.min.css' %}">
+    </head>
+
+    <body>
+        
+        <!-- header -->
+        <nav class="navbar" style="background-color: #01957d;">
+            <form class="container-fluid justify-content-start">
+                <a href="">
+                    <button class="btn btn-outline-light me-2 btn-lg" type="button">Home</button>
+                </a>
+
+                <a href="/shared">
+                    <button type="button" class="btn btn-outline-warning me-2 btn-lg">Shared Clibboard</button>
+                </a>
+                
+                <a href="">
+                    <button type="button" class="btn btn-outline-dark me-2 btn-lg"><span class="icono-search"></span></button>
+                </a>
+            </form>
+        </nav>
+
+        <!-- clipboard -->
+        <div class="board">
+            <!-- the text -->
+            <pre>{{text}}</pre>
+
+            <!-- functional button -->
+            <button style="margin-left: 1%;" type="button" class="btn btn-outline-danger">
+                <span class="icono-trash"></span>
+            </button>
+            
+            <button style="margin-left: 1%;" type="button" class="btn btn-outline-warning">
+                <span class="icono-share"></span>
+            </button>
+
+            <button style="margin-left: 1%;" type="button" class="btn btn-outline-success">
+                <span class="icono-document"></span>
+            </button>
+        </div>
+        
+    </body>
+</html>
