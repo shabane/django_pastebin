@@ -6,13 +6,12 @@ from django.http import HttpResponse
 
 def index(request):
     text = """
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+[Hi, this site is a online clipboard manager],
+[Thease line on the head of your clipboard will help you to decide what to do],
+[Click on 'file' icon to copy the text to clipboard],
+[by clicking on 'trash' icon delete a text from clipboard manager],
+[share a clipboard text by click on the 'share' button],
 """
-    text = str(text)
     return render(request, 'index.html', {'text': text })
 
 
