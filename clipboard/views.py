@@ -1,29 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import random
-
+from .models import Clipboard
 # Create your views here.
 
 def index(request):
 
     colors = [
-        '#335c67;',
-        '#01957d',
-        '#536c69',
-        '#172e1a',
-        '#4ac75',
-        '#8c432a',
-        '#610094',
+        '#FF6F61;',
+        '#6B5B95',
+        '#009B77',
+        '#DD4124',
+        '#45B8AC',
+        '#EFC050',
+        '#7FCDCD',
     ]
-
-    text = """
-[Hi, this site is a online clipboard manager],
-[Thease line on the head of your clipboard will help you to decide what to do],
-[Click on 'file' icon to copy the text to clipboard],
-[by clicking on 'trash' icon delete a text from clipboard manager],
-[share a clipboard text by click on the 'share' button],
-"""
-
+    
+    text = Clipboard.objects.filter(author=request.user)
+    
     return render(request, 'index.html', 
     {
         'text': text,
@@ -31,17 +25,4 @@ def index(request):
     })
 
 
-def new(request):
-    return HttpResponse('new')
 
-
-def login(request):
-    return HttpResponse('login page')
-
-
-def register(request):
-    return HttpResponse('sing up')
-
-
-def share(request):
-    return HttpResponse('share')

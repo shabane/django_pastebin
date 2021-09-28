@@ -50,9 +50,10 @@
         </nav>
 
         <!-- clipboard -->
+        {% for texts in text %}
         <div style="border-left-color: {{ qcolor }};" class="board">
             <!-- the text -->
-            <pre>{{text}}</pre>
+            <pre>{{texts}}</pre>
 
             <!-- functional button -->
             <button type="button" class="btn btn-outline-danger">
@@ -67,6 +68,6 @@
                 <span class="icono-document"></span>
             </button>
         </div>
-        
+        {% endfor %}
     </body>
 </html>
