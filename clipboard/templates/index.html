@@ -12,12 +12,19 @@
         <!-- header -->
         <nav class="navbar" style="background-color: #01957d;">
             <div class="container-fluid justify-content-start">
+                
                 <a href="">
-                    <button class="btn btn-outline-light me-2 btn-lg" type="button">Home</button>
+                    <button class="btn btn-outline-light me-2 btn-lg" type="button">
+                        <span class="icono-home"></span>
+                        Home
+                    </button>
                 </a>
 
                 <a href="/shared">
-                    <button type="button" class="btn btn-outline-warning me-2 btn-lg">Shared Clibboard</button>
+                    <button type="button" class="btn btn-outline-warning me-2 btn-lg">
+                        <span class="icono-book"></span>
+                        Guid
+                    </button>
                 </a>
                             
                 <form class="d-flex me-5" style="margin-top: 1%;">
@@ -34,7 +41,7 @@
                     {% else %}
                     <div class="d-flex">
                         <span class="me-3 icono-user" style="color: #444444;"></span>
-                        <a style="margin-top: 6%;" href="{% url 'login' %}">Log In</a>
+                        <a style="margin-top: 6%;" href="{% url 'login' %}">Click To Log In</a>
                     </div>
                     {% endif %}
                 </div>
