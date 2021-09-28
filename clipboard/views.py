@@ -16,8 +16,15 @@ def index(request):
         '#7FCDCD',
     ]
     
-    text = Clipboard.objects.filter(author=request.user).order_by('-id')
-    
+    if(request.user.is_authenticated):
+        text = Clipboard.objects.filter(author=request.user).order_by('-id')
+    else:
+            text = [
+                "online clipboard manager. to use, just log in",
+                """About me:
+                im Arya Shabane programer of this site, im a software student in Isfehan Sorush Uni.
+                """
+            ]
     return render(request, 'index.html', 
     {
         'text': text,
