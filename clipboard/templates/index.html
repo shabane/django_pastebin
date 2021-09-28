@@ -11,7 +11,7 @@
         
         <!-- header -->
         <nav class="navbar" style="background-color: #01957d;">
-            <form class="container-fluid justify-content-start">
+            <div class="container-fluid justify-content-start">
                 <a href="">
                     <button class="btn btn-outline-light me-2 btn-lg" type="button">Home</button>
                 </a>
@@ -19,11 +19,27 @@
                 <a href="/shared">
                     <button type="button" class="btn btn-outline-warning me-2 btn-lg">Shared Clibboard</button>
                 </a>
+                            
+                <form class="d-flex me-5" style="margin-top: 1%;">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button type="button" class="btn btn-outline-dark"><span class="icono-search"></span></button>
+                </form>
                 
-                <a href="">
-                    <button type="button" class="btn btn-outline-dark me-2 btn-lg"><span class="icono-search"></span></button>
-                </a>
-            </form>
+                <div class="navbar-nav justify-content-end me-1">
+                    {% if user.is_authenticated %}
+                    <div class="d-flex">
+                        <span class="me-3 icono-user" style="color: #444444;"></span>
+                        <p style="margin-top: 6%; color: #444444;">Logged In As {{ user.username }}</p>
+                    </div>
+                    {% else %}
+                    <div class="d-flex">
+                        <span class="me-3 icono-user" style="color: #444444;"></span>
+                        <a style="margin-top: 6%;" href="{% url 'login' %}">Log In</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
         </nav>
 
         <!-- clipboard -->
