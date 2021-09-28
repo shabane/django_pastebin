@@ -34,10 +34,10 @@
                 
                 <div class="navbar-nav justify-content-end me-1">
                     {% if user.is_authenticated %}
-                    <div class="d-flex">
+                    <a href="/logout" class="d-flex btn">
                         <span class="me-3 icono-user" style="color: #444444;"></span>
                         <p style="margin-top: 6%; color: #444444;">Logged In As {{ user.username }}</p>
-                    </div>
+                    </a>
                     {% else %}
                     <div class="d-flex">
                         <span class="me-3 icono-user" style="color: #444444;"></span>
