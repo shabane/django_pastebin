@@ -16,7 +16,7 @@ def index(request):
         '#7FCDCD',
     ]
     
-    text = Clipboard.objects.filter(author=request.user)
+    text = Clipboard.objects.filter(author=request.user).order_by('-id')
     
     return render(request, 'index.html', 
     {
