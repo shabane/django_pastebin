@@ -32,7 +32,8 @@ def index(request):
     })
 
 
-
-
 def logout(request):
     return render(request, 'logout.html', {})
+
+def support(request):
+    return render(request, 'support.html', {})

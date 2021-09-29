@@ -13,24 +13,19 @@
         <nav class="navbar" style="background-color: #01957d;">
             <div class="container-fluid justify-content-start">
                 
-                <a href="/support">
+                <a href="/">
                     <button class="btn btn-outline-light me-2 btn-lg" type="button">
-                        <span class="icono-heart"></span>
-                        Like
+                        <span class="icono-home"></span>
+                        Home
                     </button>
                 </a>
 
                 <a href="/shared">
-                    <button type="button" class="btn btn-outline-warning me-2 btn-lg">
+                    <button type="button" class="btn btn-outline-warning me-5 btn-lg">
                         <span class="icono-book"></span>
                         Guid
                     </button>
                 </a>
-                            
-                <form class="d-flex me-5" style="margin-top: 1%;">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-outline-dark"><span class="icono-search"></span></button>
-                </form>
                 
                 <div class="navbar-nav justify-content-end me-1">
                     {% if user.is_authenticated %}
@@ -45,29 +40,13 @@
                     </div>
                     {% endif %}
                 </div>
-
             </div>
         </nav>
 
-        <!-- clipboard -->
-        {% for texts in text %}
-        <div style="border-left-color: {{ qcolor }};" class="board">
-            <!-- the text -->
-            <pre>{{texts}}</pre>
 
-            <!-- functional button -->
-            <button type="button" class="btn btn-outline-danger">
-                <span class="icono-trash"></span>
-            </button>
-            
-            <button style="margin-left: 1%;" type="button" class="btn btn-outline-warning">
-                <span class="icono-share"></span>
-            </button>
-
-            <button style="margin-left: 1%;" type="button" class="btn btn-outline-success">
-                <span class="icono-document"></span>
-            </button>
+        <div>
+            <h1>explain</h1>
         </div>
-        {% endfor %}
     </body>
+
 </html>
