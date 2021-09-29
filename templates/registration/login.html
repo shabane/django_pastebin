@@ -1,14 +1,94 @@
 <html>
     <head>
         <title>login</title>
+
+        <style>
+
+            .head
+            {
+                background-color: #EFC050;
+                width: 96%;
+                height: 8%;
+                padding: 1%;
+                margin-left: 1%;
+            }
+
+            body
+            {
+                background-color: #313131;
+            }
+            .center 
+            {
+                background-color: #EFC050;
+                margin-left: 35%;
+                margin-top: 10%;
+                padding: 3%;
+                width: 20%;
+            }
+
+            p
+            {
+                color: red;
+                font-size: 25px;
+            }
+
+            input 
+            {
+                width: 100%;
+                font-size: 25px;
+                border-radius: 5px;
+            }
+
+            input:hover
+            {
+                font-size: 28;
+            }
+
+            .btm
+            {
+                border-left-width: 0;
+                border-right-width: 0;
+                font-size: 30px;
+                width: 100%;
+                height: 5%;
+                background-color: transparent;
+                /* margin-left: 14%; */
+            }
+
+            button:hover
+            {
+                color: white;
+                background-color: #444444;
+                border-radius: 5px;
+            }
+
+            .btm2
+            {
+                background-color: transparent;
+                width: 10%;
+                height: 90%;
+                font-size: 40px;
+                /* margin-left: 1%; */
+                border-top-width: 0px;
+                border-bottom-width: 0px;
+            }
+            </style>
     </head>
 
     <body>
-        <h2>Log In</h2>
+        <div class="head">
+            <button class="btm2">
+                Home
+            </button>
+        </div>
+        
+        <div class="center">
+        <h1 style="color: #313131; margin-top: 5%;">Log In</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Log In</button>
+            <button class="btm" type="submit">Log In</button>
         </form>
+    </div>
     </body>
 </html>
