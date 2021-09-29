@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'style/clipboard.css' %}">
+        <link rel="stylesheet" href="{% static 'style/icono.min.css' %}">
+    </head>
+
+    <body>
+
+        <!-- header -->
+        <nav class="navbar" style="background-color: #01957d;">
+            <div class="container-fluid justify-content-start">
+                
+                <a href="">
+                    <button class="btn btn-outline-light me-2 btn-lg" type="button">
+                        <span class="icono-home"></span>
+                        Home
+                    </button>
+                </a>
+
+                <a href="/shared">
+                    <button type="button" class="btn btn-outline-warning me-2 btn-lg">
+                        <span class="icono-book"></span>
+                        Guid
+                    </button>
+                </a>
+                
+                <div class="navbar-nav justify-content-end me-1">
+                    {% if user.is_authenticated %}
+                    <a href="/logout" class="d-flex btn">
+                        <span class="me-3 icono-user" style="color: #444444;"></span>
+                        <p style="margin-top: 6%; color: #444444;">Logged In As {{ user.username }}</p>
+                    </a>
+                    {% else %}
+                    <div class="d-flex">
+                        <span class="me-3 icono-user" style="color: #444444;"></span>
+                        <a style="margin-top: 6%;" href="{% url 'login' %}">Click To Log In</a>
+                    </div>
+                    {% endif %}
+                </div>
+
+            </div>
+        </nav>
+
+        <center>
+            <div style="border-right-width: 0px; border-left-width: 0px; border-color: #313131; border-style: solid; margin: 4%;">
+                <a style="font-size: 30px; margin: 1%;" href="/accounts/logout" class="btn btn-outline-danger">
+                    To log out click here
+                    <span class="icono-signOut"></span>
+                </a>
+            </div>
+        </center>
+    </body>
