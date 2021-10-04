@@ -1,5 +1,6 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, request
 import random
 from .models import Clipboard
 # Create your views here.
@@ -35,5 +36,24 @@ def index(request):
 def logout(request):
     return render(request, 'logout.html', {})
 
+
 def support(request):
     return render(request, 'support.html', {})
+
+
+def delete(request):
+    if(request.user.is_authenticated):
+        if(request.method == 'GET'):
+            id = request.GET['id']
+            if(id.isdigit()):
+                if(Clipboard.objects.filter(id=id)):
+                    Clipboard.objects.get(pk=id).delete()
+                    return HttpResponseRedirect('/')
+                else:
+                    result = """
+                        'result': False,
+                        'msg': 'object not fount'
+                    """
+                    return HttpResponse(result)
+    else:
+        return HttpResponse('you dont have <b>permisson</b> to do this')

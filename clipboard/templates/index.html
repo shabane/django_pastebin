@@ -8,8 +8,11 @@
         <link rel="stylesheet" href="{% static 'style/icono.min.css' %}">
     </head>
 
+    
+
     <body>
         
+            
         <!-- header -->
         <nav class="navbar" style="background-color: #01957d;">
             <div class="container-fluid justify-content-start">
@@ -53,24 +56,28 @@
         <!-- clipboard -->
         {% for texts in text %}
         <div style="border-left-color: {{ qcolor }};" class="board">
+            <form method="POST">
+            {% csrf_token %}
             <!-- the text -->
             <pre>{{texts}}</pre>
-
-            <!-- functional button -->
-            <button type="button" class="btn btn-outline-danger">
-                <span class="icono-trash"></span>
-            </button>
             
-            <button style="margin-left: 1%;" type="button" class="btn btn-outline-warning">
+            <!-- functional button -->
+            
+            <!-- <button > -->
+                <a class="btn btn-outline-danger" href="/action/delete?id={{texts.id}}">
+                    <span class="icono-trash"></span>
+                </a>
+            <!-- </button> -->
+            
+
+            <button style="margin-left: 1%;" type="submit" class="btn btn-outline-warning">
                 <span class="icono-share"></span>
             </button>
-
-            <button style="margin-left: 1%;" type="button" class="btn btn-outline-success">
-                <span class="icono-document"></span>
-            </button>
+            </form>
         </div>
         {% endfor %}
-
+        
+            
         <hr>
     </body>
 </html>
