@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <title>singup</title>
+
+        <style>
+
+            .head
+            {
+                background-color:  #009B77;
+                width: 96%;
+                height: 8%;
+                padding: 1%;
+                margin-left: 1%;
+            }
+
+            body
+            {
+                /* background-color: white; */
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1000%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='%230e2a47'%3e%3c/rect%3e%3cpath d='M0%2c415.2C95.564%2c429.975%2c195.287%2c481.009%2c283.093%2c440.502C372.288%2c399.354%2c411.077%2c295.719%2c452.283%2c206.551C493.648%2c117.038%2c550.046%2c19.373%2c521.289%2c-74.95C492.819%2c-168.33%2c381.45%2c-202.589%2c307.953%2c-266.843C246.264%2c-320.774%2c202.662%2c-399.366%2c123.993%2c-422.283C45.38%2c-445.183%2c-34.085%2c-405.403%2c-114.485%2c-389.901C-204.453%2c-372.555%2c-298.646%2c-374.862%2c-376.071%2c-325.867C-469.591%2c-266.687%2c-568.184%2c-192.883%2c-595.357%2c-85.599C-623.045%2c23.715%2c-589.784%2c149.38%2c-518.595%2c236.834C-451.505%2c319.252%2c-332.414%2c326.311%2c-231.92%2c360.875C-155.285%2c387.233%2c-80.089%2c402.817%2c0%2c415.2' fill='%23091b2e'%3e%3c/path%3e%3cpath d='M1440 1085.87C1569.328 1116.1860000000001 1709.4180000000001 1224.738 1823.847 1157.277 1937.107 1090.505 1904.925 915.498 1942.634 789.545 1974.393 683.4639999999999 2032.31 586.11 2027.9740000000002 475.462 2023.3490000000002 357.419 1989.1390000000001 240.185 1917.429 146.305 1843.218 49.14999999999998 1737.509-19.44399999999996 1621.192-57.08299999999997 1502.815-95.38900000000001 1371.287-113.75800000000004 1255.649-67.84299999999996 1143.599-23.351999999999975 1079.109 88.394 1008.572 186.16500000000002 943.799 275.947 882.91 368.153 862.587 476.981 841.691 588.875 836.309 710.992 892.026 810.252 946.3399999999999 907.0129999999999 1057.533 951.021 1156.663 1000.881 1246.5720000000001 1046.103 1342.015 1062.901 1440 1085.87' fill='%23133960'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1000'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+            }
+            .center 
+            {
+                background-color: #009B77;
+                margin-left: 35%;
+                margin-top: 4%;
+                padding: 3%;
+                width: 20%;
+            }
+
+            p
+            {
+                color: white;
+                font-size: 25px;
+            }
+
+            input 
+            {
+                width: 100%;
+                font-size: 25px;
+                border-radius: 5px;
+            }
+
+            input:hover
+            {
+                font-size: 28;
+            }
+
+            .btm
+            {
+                border-left-width: 0;
+                border-right-width: 0;
+                font-size: 30px;
+                width: 100%;
+                height: 5%;
+                background-color: transparent;
+                /* margin-left: 14%; */
+            }
+
+            button:hover
+            {
+                color: white;
+                background-color: #444444;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .btm2
+            {
+                /* this will use in home btn */
+                background-color: transparent;
+                width: 10%;
+                height: 90%;
+                font-size: 40px;
+                /* margin-left: 1%; */
+                border-top-width: 0px;
+                border-bottom-width: 0px;
+            }
+
+            a:hover {
+                color: white;
+            }
+
+            a:link {
+                text-decoration: none;
+                color: #313131;
+            }
+
+            a:visited {
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="head">
+            <button class="btm2">
+                <a href="/">Home</a>
+            </button>
+        </div>
+        
+        <div class="center">
+        <h1 style="color: white; margin-top: 0%;">Singin</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <p>username</p>
+            <input type="text" name="username">
+
+            <p>email</p>
+            <input type="text" name="email">
+
+            <p>password</p>
+            <input type="password" name="password">
+
+            <p>re-enter password</p>
+            <input type="password" name="repassword">
+
+            <br><br>
+            <button class="btm" type="submit">singup</button>
+        </form>
+    </div>
+    </body>
+</html>
