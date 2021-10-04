@@ -41,6 +41,10 @@ def support(request):
     return render(request, 'support.html', {})
 
 
+def guide(request):
+    return render(request, 'guide.html', {})
+
+
 def delete(request):
     if(request.user.is_authenticated):
         if(request.method == 'GET'):
