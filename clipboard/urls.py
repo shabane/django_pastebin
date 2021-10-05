@@ -6,5 +6,6 @@ urlpatterns = [
     path('logout', views.logout),
     path('support', views.support),
     path('action/delete', views.delete),
-    path('guide', views.guide)
+    path('guide', views.guide),
+    path('action/share', views.share)
 ]

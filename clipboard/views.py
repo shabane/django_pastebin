@@ -3,10 +3,10 @@ from django.shortcuts import render
 from django.http import HttpResponse, request
 import random
 from .models import Clipboard
+from hashlib import blake2b
 # Create your views here.
 
 def index(request):
-
     colors = [
         '#FF6F61;',
         '#6B5B95',
@@ -61,3 +61,31 @@ def delete(request):
                     return HttpResponse(result)
     else:
         return HttpResponse('you dont have <b>permisson</b> to do this')
+
+
+def share(request):
+    if(request.user.is_authenticated):
+        if(request.method == 'GET'):
+            id = request.GET['id']
+            if(id.isdigit()):
+                if(Clipboard.objects.filter(pk=id)):
+                    clipb = Clipboard.objects.get(pk=id)
+                    link = blake2b(clipb.text.encode('utf-8'), digest_size=3).hexdigest()
+                    Clipboard.objects.filter(pk=id).update(link=link)
+                    return HttpResponseRedirect('/')
+                else:
+                    result = """
+                        'result': False,
+                        'msg', 'object not found'
+                    """
+                    return HttpResponse(result)
+            else:
+                result = """
+                    'result': False,
+                    'msg', 'you should pass a digit as id'
+                """
+    else:
+        result = """
+            'result', False,
+            'msg', 'you dont have permision to do this, pleas log in fist'
+        """
