@@ -1,6 +1,6 @@
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
-from django.http import HttpResponse, request
+from django.http import HttpResponse, request, JsonResponse
 import random
 from .models import Clipboard
 from hashlib import blake2b
@@ -50,7 +50,7 @@ def delete(request):
         if(request.method == 'GET'):
             id = request.GET['id']
             if(id.isdigit()):
-                if(Clipboard.objects.filter(id=id)):
+                if(Clipboard.objects.filter(id=id, author=request.user)):
                     Clipboard.objects.get(pk=id).delete()
                     return HttpResponseRedirect('/')
                 else:
@@ -68,17 +68,17 @@ def share(request):
         if(request.method == 'GET'):
             id = request.GET['id']
             if(id.isdigit()):
-                if(Clipboard.objects.filter(pk=id)):
+                if(Clipboard.objects.filter(pk=id, author=request.user)):
                     clipb = Clipboard.objects.get(pk=id)
                     link = blake2b(clipb.text.encode('utf-8'), digest_size=3).hexdigest()
                     Clipboard.objects.filter(pk=id).update(link=link)
                     return HttpResponseRedirect('/')
                 else:
-                    result = """
+                    result = {
                         'result': False,
-                        'msg', 'object not found'
-                    """
-                    return HttpResponse(result)
+                        'msg': 'object not found'
+                    }
+                    return JsonResponse(result)
             else:
                 result = """
                     'result': False,
