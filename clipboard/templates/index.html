@@ -70,9 +70,11 @@
             <!-- </button> -->
             
 
-            <button style="margin-left: 1%;" type="submit" class="btn btn-outline-warning">
+            <a href="/action/share?id={{ texts.id }}" style="margin-left: 1%;" type="submit" class="btn btn-outline-warning">
                 <span class="icono-share"></span>
-            </button>
+            </a>
+            <input disabled type="text" class="form-text" style="visibility: {{ visable }};" value="{{ link }}">
+            
             </form>
         </div>
         {% endfor %}
