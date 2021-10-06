@@ -1,4 +1,4 @@
-from django.http.response import HttpResponseRedirect
+from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse, request, JsonResponse
 import random
@@ -89,3 +89,28 @@ def share(request):
             'result', False,
             'msg', 'you dont have permision to do this, pleas log in fist'
         """
+
+
+def shared(request, link):
+    colors = [
+        '#FF6F61;',
+        '#6B5B95',
+        '#009B77',
+        '#DD4124',
+        '#45B8AC',
+        '#EFC050',
+        '#7FCDCD',
+    ]
+
+    text = Clipboard.objects.filter(link=link)
+    if(text):
+        text = text[0]
+    else:
+        return HttpResponseNotFound('404 not found')
+        
+    print(text)
+    context = {
+        'qcolor': colors[random.randint(0, len(colors)-1)],
+        'text': text
+    }
+    return render(request, 'shared.html', context)

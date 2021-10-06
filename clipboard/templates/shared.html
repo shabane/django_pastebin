@@ -8,19 +8,16 @@
         <link rel="stylesheet" href="{% static 'style/icono.min.css' %}">
     </head>
 
-    
-
     <body>
-        
-            
+
         <!-- header -->
         <nav class="navbar" style="background-color: #01957d;">
             <div class="container-fluid justify-content-start">
                 
-                <a href="/support">
+                <a href="/">
                     <button class="btn btn-outline-light me-2 btn-lg" type="button">
-                        <span class="icono-heart"></span>
-                        Like
+                        <span class="icono-home"></span>
+                        Home
                     </button>
                 </a>
 
@@ -30,11 +27,6 @@
                         Guid
                     </button>
                 </a>
-                            
-                <form class="d-flex me-5" style="margin-top: 1%;">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button type="button" class="btn btn-outline-dark"><span class="icono-search"></span></button>
-                </form>
                 
                 <div class="navbar-nav justify-content-end me-1">
                     {% if user.is_authenticated %}
@@ -53,33 +45,7 @@
             </div>
         </nav>
 
-        <!-- clipboard -->
-        {% for texts in text %}
         <div style="border-left-color: {{ qcolor }};" class="board">
-            <form method="POST">
-            {% csrf_token %}
-            <!-- the text -->
-            <pre>{{texts}}</pre>
-            
-            <!-- functional button -->
-            
-            <!-- <button > -->
-                <a class="btn btn-outline-danger" href="/action/delete?id={{texts.id}}">
-                    <span class="icono-trash"></span>
-                </a>
-            <!-- </button> -->
-            
-
-            <a href="/action/share?id={{ texts.id }}" style="margin-left: 1%;" type="submit" class="btn btn-outline-warning">
-                <span class="icono-share"></span>
-            </a>
-            <input disabled type="text" class="form-text" style="visibility: {% if texts.link|length > 0%} visabe; {% else %} hidden; {% endif %}" value="{{ request.get_host }}/{{ texts.link }}">
-            
-            </form>
+            <pre>{{ text.text }}</pre>
         </div>
-        {% endfor %}
-        
-            
-        <hr>
-    </body>
-</html>
+</body>
