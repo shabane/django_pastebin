@@ -1,3 +1,4 @@
+from django import http
 from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse, request, JsonResponse
@@ -78,17 +79,19 @@ def share(request):
                         'result': False,
                         'msg': 'object not found'
                     }
-                    return JsonResponse(result)
+                    return HttpResponse(result)
             else:
                 result = """
                     'result': False,
                     'msg', 'you should pass a digit as id'
                 """
+                return HttpResponse(result)
     else:
         result = """
             'result', False,
             'msg', 'you dont have permision to do this, pleas log in fist'
         """
+        return HttpResponse(result)
 
 
 def shared(request, link):
@@ -114,3 +117,38 @@ def shared(request, link):
         'text': text
     }
     return render(request, 'shared.html', context)
+
+
+def search(request):
+    if(request.user.is_authenticated):
+        if(request.method == 'GET'):
+            colors = [
+                '#FF6F61;',
+                '#6B5B95',
+                '#009B77',
+                '#DD4124',
+                '#45B8AC',
+                '#EFC050',
+                '#7FCDCD',
+            ]
+
+            user = request.user
+            q = request.GET['text']
+            text = Clipboard.objects.filter(text__icontains=q, author=user).order_by('-id')
+            visiblity = 'visible'
+            if(not text):
+                text = ['nothing matches :(']
+                visiblity = 'hidden'
+
+            context = {
+                'qcolor': colors[random.randint(0, len(colors)-1)],
+                'text': text,
+                'visiblity' : visiblity,
+                'searched': q
+            }
+            return render(request, 'search.html', context)
+    else:
+        result = """
+            login first <a href='/accounts/login'>login</a>
+        """
+        return HttpResponse(result)

@@ -8,5 +8,6 @@ urlpatterns = [
     path('action/delete', views.delete),
     path('guide', views.guide),
     path('action/share', views.share),
+    path('search', views.search),
     path('<str:link>', views.shared)
 ]

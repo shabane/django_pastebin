@@ -17,10 +17,9 @@
         <nav class="navbar" style="background-color: #01957d;">
             <div class="container-fluid justify-content-start">
                 
-                <a href="/support">
+                <a href="/">
                     <button class="btn btn-outline-light me-2 btn-lg" type="button">
-                        <span class="icono-heart"></span>
-                        Like
+                        <span class="icono-home"></span>
                     </button>
                 </a>
 
@@ -32,7 +31,7 @@
                 </a>
                             
                 <form class="d-flex me-5" style="margin-top: 1%;" method="GET" action="/search">
-                    <input class="form-control me-2" type="text" placeholder="Search" name="text">
+                    <input class="form-control me-2" type="text" placeholder="Search" name="text" value="{{ searched }}">
                     <button type="submit" class="btn btn-outline-dark"><span class="icono-search"></span></button>
                 </form>
                 
@@ -64,13 +63,13 @@
             <!-- functional button -->
             
             <!-- <button > -->
-                <a class="btn btn-outline-danger" href="/action/delete?id={{texts.id}}">
+                <a class="btn btn-outline-danger" href="/action/delete?id={{texts.id}}" style="visibility: {{ visiblity }};">
                     <span class="icono-trash"></span>
                 </a>
             <!-- </button> -->
             
 
-            <a href="/action/share?id={{ texts.id }}" style="margin-left: 1%;" type="submit" class="btn btn-outline-warning">
+            <a href="/action/share?id={{ texts.id }}" style="margin-left: 1%; visibility: {{ visiblity }};" type="submit" class="btn btn-outline-warning">
                 <span class="icono-share"></span>
             </a>
             <input disabled type="text" class="form-text" style="visibility: {% if texts.link|length > 0%} visabe; {% else %} hidden; {% endif %}" value="{{ request.get_host }}/{{ texts.link }}">
