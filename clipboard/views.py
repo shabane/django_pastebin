@@ -1,5 +1,6 @@
+from typing import Text
 from django import http
-from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect
+from django.http.response import Http404, HttpResponseForbidden, HttpResponseNotAllowed, HttpResponseNotFound, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse, request, JsonResponse
 import random
@@ -152,3 +153,15 @@ def search(request):
             login first <a href='/accounts/login'>login</a>
         """
         return HttpResponse(result)
+
+
+def add(request):
+    if(request.user.is_authenticated):
+        if(request.method == 'POST'):    
+            text = request.POST['text']
+            if(len(text.strip())):
+                Clipboard.objects.create(text=text, author=request.user)
+                return HttpResponseRedirect('/')
+    else:
+        return HttpResponse('please login first <a href="/accounts/login">login</a>')
+    return render(request, 'add.html', {})

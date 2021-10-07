@@ -9,5 +9,6 @@ urlpatterns = [
     path('guide', views.guide),
     path('action/share', views.share),
     path('search', views.search),
+    path('add', views.add),
     path('<str:link>', views.shared)
 ]
