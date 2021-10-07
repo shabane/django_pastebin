@@ -51,7 +51,7 @@
                     {% else %}
                     <div class="d-flex">
                         <span class="me-3 icono-user" style="color: #444444;"></span>
-                        <a style="margin-top: 6%;" href="{% url 'login' %}">Click To Log In</a>
+                        <a style="margin-top: 6%; color: white;" href="{% url 'login' %}">Click To Log In</a>
                     </div>
                     {% endif %}
                 </div>
@@ -65,17 +65,16 @@
             <form method="POST">
             {% csrf_token %}
             <!-- the text -->
-            <pre>{{texts}}</pre>
+            <pre style="white-space: pre-line; word-wrap: break-word; text-align: justify; margin-right: 2%;">{{texts}}</pre>
             
             <!-- functional button -->
             
-            <!-- <button > -->
+            
                 <a class="btn btn-outline-danger" href="/action/delete?id={{texts.id}}">
                     <span class="icono-trash"></span>
                 </a>
-            <!-- </button> -->
             
-
+            
             <a href="/action/share?id={{ texts.id }}" style="margin-left: 1%;" type="submit" class="btn btn-outline-warning">
                 <span class="icono-share"></span>
             </a>
