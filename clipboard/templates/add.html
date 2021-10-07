@@ -47,10 +47,11 @@
         <center>
         <form method="POST">
             {% csrf_token %}
-          <div class="col-6">
+          <div class="col-xl-6 col-10">
             <textarea name="text" placeholder="paste or type your text here to save it in cloud" class="form-control" rows="20" id="exampleFormControlTextarea1"></textarea>
           </div>
-          <button type="submit" class="btn btn-outline-success" style="margin-top: 1%; width: 12.5%;">
+          <br>
+          <button type="submit" class="btn btn-outline-success" >
             save<span class="icono-bookmarkEmpty"></span>
           </button>
         </form>
