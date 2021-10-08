@@ -27,7 +27,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                 <a href="/guide">
                     <button type="button" class="btn btn-outline-warning me-5 btn-lg">
                         <span class="icono-book"></span>
-                        Guide
+                        راهنما
                     </button>
                 </a>
                 
@@ -35,7 +35,7 @@ style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-w
                     {% if user.is_authenticated %}
                     <a href="/logout" class="d-flex btn">
                         <span class="me-3 icono-user" style="color: #444444;"></span>
-                        <p style="margin-top: 6%; color: #444444;">Logged In As {{ user.username }}</p>
+                        <p style="margin-top: 6%; color: #444444; direction: rtl;"> شما به عنوان {{ user.username }} وارد شده اید </p>
                     </a>
                     {% else %}
                     <div class="d-flex">

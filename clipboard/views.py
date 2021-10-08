@@ -42,7 +42,7 @@ def support(request):
 
 
 def guide(request):
-    return render(request, 'guide.html', {})
+    return render(request, 'per/guide.html', {})
 
 
 def delete(request):
