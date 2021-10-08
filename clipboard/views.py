@@ -24,12 +24,9 @@ def index(request):
         text = Clipboard.objects.filter(author=request.user).order_by('-id')
     else:
             text = [
-                "online clipboard manager. to use, just log in",
-                """About me:
-                im Arya Shabane programer of this site, im a software student in Isfehan Sorush Uni.
-                """
+                "مدیریت آنلاین کلیپ برد",
             ]
-    return render(request, 'index.html', 
+    return render(request, 'per/index.html', 
     {
         'text': text,
         'qcolor': colors[random.randint(0, len(colors)-1)]
@@ -37,7 +34,7 @@ def index(request):
 
 
 def logout(request):
-    return render(request, 'logout.html', {})
+    return render(request, 'per/logout.html', {})
 
 
 def support(request):
@@ -118,7 +115,7 @@ def shared(request, link):
         'qcolor': colors[random.randint(0, len(colors)-1)],
         'text': text
     }
-    return render(request, 'shared.html', context)
+    return render(request, 'per/shared.html', context)
 
 
 def search(request):
@@ -148,7 +145,7 @@ def search(request):
                 'visiblity' : visiblity,
                 'searched': q
             }
-            return render(request, 'search.html', context)
+            return render(request, 'per/search.html', context)
     else:
         result = """
             login first <a href='/accounts/login'>login</a>
@@ -165,4 +162,5 @@ def add(request):
                 return HttpResponseRedirect('/')
     else:
         return HttpResponse('please login first <a href="/accounts/login">login</a>')
-    return render(request, 'add.html', {})
+    return render(request, 'per/add.html', {})
+

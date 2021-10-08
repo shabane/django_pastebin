@@ -1,0 +1,62 @@
+<html>
+    <head>
+        <title>add text</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'style/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'style/clipboard.css' %}">
+        <link rel="stylesheet" href="{% static 'style/icono.min.css' %}">
+    </head>
+
+    <body>
+
+        <!-- header -->
+        <nav class="navbar mb-5" style="background-color: #01957d;">
+            <div class="container-fluid justify-content-start">
+                
+                <a href="/">
+                    <button class="btn btn-outline-light me-2 btn-lg" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+width="32" height="32"
+viewBox="0 0 172 172"
+style=" fill:#000000;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,172v-172h172v172z" fill="none"></path><g fill="#333333"><path d="M86,14.19336l-78.90332,73.23438l7.30665,7.89453l7.09668,-6.59278v61.77051h53.75v-53.75h21.5v53.75h53.75v-61.77051l7.09668,6.59278l7.30665,-7.89453zM86,28.80665l53.75,49.9707v60.97266h-32.25v-53.75h-43v53.75h-32.25v-60.97266z"></path></g></g></svg>
+                    </button>
+                </a>
+
+                <a href="/guide">
+                    <button type="button" class="btn btn-outline-warning me-5 btn-lg">
+                        <span class="icono-book"></span>
+                        راهنما
+                    </button>
+                </a>
+                
+                <div class="navbar-nav justify-content-end me-1">
+                    {% if user.is_authenticated %}
+                    <a href="/logout" class="d-flex btn">
+                        <span class="me-2 icono-user" style="color: #444444;"></span>
+                        <p style="margin-top: 6%; color: #444444; direction: rtl;">شما به عنوان {{ user.username }} وارد شده اید</p>
+                    </a>
+                    {% else %}
+                    <div class="d-flex">
+                        <span class="me-3 icono-user" style="color: #444444;"></span>
+                        <a style="margin-top: 6%;" href="{% url 'login' %}">برای وارد شدن کلیک کنید</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+
+        <center>
+        <form method="POST">
+            {% csrf_token %}
+          <div class="col-xl-6 col-10">
+            <textarea name="text" placeholder="متن خود را اینجا تایپ یا جای‌گذای کنید" class="form-control" rows="20" id="exampleFormControlTextarea1"></textarea>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-outline-success" >
+            ذخیره<span class="icono-bookmarkEmpty"></span>
+          </button>
+        </form>
+        </center>
+</body>
