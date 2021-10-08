@@ -64,11 +64,11 @@
 
         <!-- clipboard -->
         {% for texts in text %}
-        <div style="border-left-color: {{ qcolor }};" class="board">
+        <div style="border-left-color: {{ qcolor }};" class="board col-10">
             <form method="POST">
             {% csrf_token %}
             <!-- the text -->
-            <p style="white-space: pre-line; word-wrap: break-word; text-align: justify; margin-right: 2%;">{{texts}}</p>
+            <p style="white-space: pre-wrap; word-wrap: break-word; text-align: justify; margin-right: 2%;">{{texts}}</p>
             
             <!-- functional button -->
             
