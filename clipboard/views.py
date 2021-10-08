@@ -22,7 +22,6 @@ def index(request):
     
     if(request.user.is_authenticated):
         text = Clipboard.objects.filter(author=request.user).order_by('-id')
-
     else:
             text = [
                 "online clipboard manager. to use, just log in",
