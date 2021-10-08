@@ -6,6 +6,7 @@ from django.http import HttpResponse, request, JsonResponse
 import random
 from .models import Clipboard
 from hashlib import blake2b
+
 # Create your views here.
 
 def index(request):
@@ -21,6 +22,7 @@ def index(request):
     
     if(request.user.is_authenticated):
         text = Clipboard.objects.filter(author=request.user).order_by('-id')
+
     else:
             text = [
                 "online clipboard manager. to use, just log in",
