@@ -38,7 +38,7 @@ def logout(request):
 
 
 def support(request):
-    return render(request, 'support.html', {})
+    return render(request, 'per/support.html', {})
 
 
 def guide(request):
