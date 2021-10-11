@@ -3,6 +3,7 @@ from clipboard.models import User, Clipboard
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponse
 from clipboard import views as utils
+from hashlib import blake2b
 # Create your views here.
 
 def AddText(request):
@@ -50,5 +51,26 @@ def DeleteText(request):
         return HttpResponse('username or password incorrect')
 
 
-##### todo
+def ShareText(request):
+    user = request.GET['user']
+    password = request.GET['password']
+    textId = request.GET['id']
+    user = User.objects.filter(username=user)
+    if(user):
+        if(check_password(password, user[0].password)):
+            clipb = Clipboard.objects.filter(pk=textId, author=user[0])
+            if(clipb):
+                if(not clipb[0].link):
+                    link = blake2b(clipb[0].text.encode('utf-8'), digest_size=3).hexdigest()
+                    clipb.update(link=link)
+                    return HttpResponse('link created') # temp
+                else:
+                    return HttpResponse('link created')
+            else:
+                return HttpResponse('object not found')
+        else:
+            return HttpResponse('username or password incorrect')
+    else:
+        return HttpResponse('username or password incorrect')
+
 
