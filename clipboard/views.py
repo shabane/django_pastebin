@@ -51,7 +51,7 @@ def delete(request):
             id = request.GET['id']
             if(id.isdigit()):
                 if(Clipboard.objects.filter(id=id, author=request.user)):
-                    Clipboard.objects.get(pk=id).delete()
+                    Clipboard.objects.get(pk=id, author=request.user).delete()
                     return HttpResponseRedirect('/')
                 else:
                     result = """
@@ -69,7 +69,7 @@ def share(request):
             id = request.GET['id']
             if(id.isdigit()):
                 if(Clipboard.objects.filter(pk=id, author=request.user)):
-                    clipb = Clipboard.objects.get(pk=id)
+                    clipb = Clipboard.objects.get(pk=id, author=request.user)
                     link = blake2b(clipb.text.encode('utf-8'), digest_size=3).hexdigest()
                     Clipboard.objects.filter(pk=id).update(link=link)
                     return HttpResponseRedirect('/')
