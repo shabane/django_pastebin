@@ -38,11 +38,20 @@ def UserLogin(request):
     user = User.objects.filter(username=user)
     if(user):
         if(check_password(password, user[0].password)):
-            return HttpResponse('username and password is correct') # temp
+            return JsonResponse({
+                'result': True,
+                'msg': 'username and password maches'
+            })
         else:
-            return HttpResponse('username or password incorrect')
+            return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorect'
+            })
     else:
-        return HttpResponse('username or password incorrect')
+        return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorect'
+            })
 
 
 def DeleteText(request):
@@ -138,9 +147,31 @@ def CheckChanges(request):
             })
 
 
+def GetText(request):
+    user = request.GET['user']
+    password = request.GET['password']
+    user = User.objects.filter(username=user)
+    lst = request.GET.getlist('id')
+    if(user):
+        if(check_password(password, user[0].password)):
+            clipb = []
+            for i in lst:
+                if(j := Clipboard.objects.filter(author=user[0], pk=int(i))):
+                    clipb.append({
+                        'status': 1,
+                        'text': j[0].text,
+                        'id': j[0].id,
+                        'link': j[0].link
+                    })
+                else:
+                    clipb.append({
+                        'status': 0,
+                        'msg': 'object ' + i + ' not exist'
+                    })
+            return JsonResponse({'result': True, 'objects': clipb})
+        else:
+            return HttpResponse('username or password incorrect')
+    else:
+        return HttpResponse('username or password incorrect')
 
 
-
-
-
-            
