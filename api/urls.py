@@ -5,5 +5,6 @@ urlpatterns = [
     path('addtext', views.AddText),
     path('delete', views.DeleteText),
     path('login', views.UserLogin),
-    path('share', views.ShareText)
+    path('share', views.ShareText),
+    path('checkchanges', views.CheckChanges)
 ]

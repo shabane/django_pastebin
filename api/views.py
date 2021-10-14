@@ -1,10 +1,11 @@
+from django.http.response import JsonResponse
 from django.shortcuts import render
+import clipboard
 from clipboard.models import User, Clipboard
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponse
 from clipboard import views as utils
 from hashlib import blake2b
-# Create your views here.
 
 def AddText(request):
     user = request.GET['user']
@@ -74,3 +75,23 @@ def ShareText(request):
         return HttpResponse('username or password incorrect')
 
 
+def CheckChanges(request):
+    user = request.GET['user']
+    password = request.GET['password']
+    user = User.objects.filter(username=user)
+    if(user):
+        if(check_password(password, user[0].password)):
+            texts_id = []
+            for i in Clipboard.objects.filter(author=user[0]):
+                texts_id.append(i.id)
+            return JsonResponse({'TextsId': texts_id})
+        else:
+            return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
+    else:
+        return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
