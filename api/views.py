@@ -1,3 +1,4 @@
+import json
 from django.http.response import JsonResponse
 from django.shortcuts import render
 import clipboard
@@ -15,11 +16,20 @@ def AddText(request):
     if(user):
         if(check_password(password, user[0].password)):
             Clipboard.objects.create(author=user[0], text=text)
-            return HttpResponse('text added') # temp response
+            return JsonResponse({
+                'result': True,
+                'msg': 'text added'
+            })
         else:
-            print('incorrect username or password')
+            return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
     else:
-        print('incorrect username or password')
+        return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
 
 
 def UserLogin(request):
@@ -43,13 +53,25 @@ def DeleteText(request):
     if(user):
         if(check_password(password, user[0].password)):
             if(Clipboard.objects.filter(id=textId, author=user[0]).delete()[0] == 1):
-                return HttpResponse('object deleted') # temp
+                return JsonResponse({
+                'result': True,
+                'msg': 'object deleted'
+            })
             else:
-                return HttpResponse('object not found')
+                return JsonResponse({
+                'result': False,
+                'msg': 'object not found'
+            })
         else:
-            return HttpResponse('username or password incorrect')
+            return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
     else:
-        return HttpResponse('username or password incorrect')
+        return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
 
 
 def ShareText(request):
@@ -64,15 +86,30 @@ def ShareText(request):
                 if(not clipb[0].link):
                     link = blake2b(clipb[0].text.encode('utf-8'), digest_size=3).hexdigest()
                     clipb.update(link=link)
-                    return HttpResponse('link created') # temp
+                    return JsonResponse({
+                        'result': True,
+                        'link': link
+                    })
                 else:
-                    return HttpResponse('link created')
+                    return JsonResponse({
+                        'result': True,
+                        'link': clipb[0].link
+                    })
             else:
-                return HttpResponse('object not found')
+                return JsonResponse({
+                        'result': False,
+                        'msg': 'object not found'
+                    })
         else:
-            return HttpResponse('username or password incorrect')
+            return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
     else:
-        return HttpResponse('username or password incorrect')
+        return JsonResponse({
+                'result': False,
+                'msg': 'username or password incorrect'
+            })
 
 
 def CheckChanges(request):
@@ -84,7 +121,11 @@ def CheckChanges(request):
             texts_id = []
             for i in Clipboard.objects.filter(author=user[0]):
                 texts_id.append(i.id)
-            return JsonResponse({'TextsId': texts_id})
+            return JsonResponse({
+                'result': True,
+                'TextsId': texts_id,
+                'msg': None
+                })
         else:
             return JsonResponse({
                 'result': False,
@@ -95,3 +136,11 @@ def CheckChanges(request):
                 'result': False,
                 'msg': 'username or password incorrect'
             })
+
+
+
+
+
+
+
+            
