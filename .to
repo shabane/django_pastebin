@@ -28,6 +28,38 @@
                     "d": 15
                 }
             }
+        ],
+        "introduce": [
+            {
+                "done": "False",
+                "task": "translate the artice of waht is paste-bin",
+                "priority": 2,
+                "deadline": {
+                    "y": 2021,
+                    "m": 11,
+                    "d": 15
+                },
+                "begintime": {
+                    "y": 2021,
+                    "m": 10,
+                    "d": 15
+                }
+            },
+            {
+                "done": "False",
+                "task": "make video of how to work with",
+                "priority": 2,
+                "deadline": {
+                    "y": 2021,
+                    "m": 11,
+                    "d": 12
+                },
+                "begintime": {
+                    "y": 2021,
+                    "m": 10,
+                    "d": 15
+                }
+            }
         ]
     }
 }
