@@ -1,7 +1,6 @@
 import json
 from django.http.response import JsonResponse
 from django.shortcuts import render
-import clipboard
 from clipboard.models import User, Clipboard
 from django.contrib.auth.hashers import check_password
 from django.http import HttpResponse
