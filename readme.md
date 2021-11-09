@@ -20,7 +20,6 @@ API of the site to add a text, share, delete and view a text.
 site are avilable in persian and english, to use it in english in the django url change
 the template url from `template/per/` to `template`
 
-![pastebin](https://s4.uupload.ir/files/cmng_hnm6.jpg)
 
 
 ### API
@@ -33,3 +32,19 @@ all api and usage explained.
 1. so at fist clone the repo `git clone https://github.com/shabane/pastebin.git`
 2. then if you have linux jsut cd to project dir and enter `./manage.py runserver`
 3. the server run in `127.0.0.1:8000`, and just turn browser to this [url](127.0.0.1:8000).
+
+### screenshot
+> Home page
+> ![pastebin](https://s4.uupload.ir/files/cmng_hnm6.jpg)
+
+> Logout
+> ![pastebin](https://s4.uupload.ir/files/logout_hg8g.jpg)
+
+> Login
+> ![pastebin](https://s4.uupload.ir/files/singin_fzf7.jpg)
+
+> Singup
+> ![pastebin](https://s4.uupload.ir/files/singup_8xe.jpg)
+
+> Adding Text page
+> ![pastebin](https://s4.uupload.ir/files/addtext_xku.jpg)
