@@ -17,8 +17,8 @@ pastebin sites are famouse for don't dont editing the text's.
 and the last thing is that this site provide all the functions as API, so you can use
 API of the site to add a text, share, delete and view a text.
 
-site are avilable in persian and english, to use it in english in the django url change
-the template url from `template/per/` to `template`
+site are avilable in both persian and english, to use it in persion, in the django url change
+the template url to `template/per`
 
 ![pastebin](https://s4.uupload.ir/files/cmng_hnm6.jpg)
 
