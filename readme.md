@@ -35,16 +35,16 @@ all api and usage explained.
 
 ### screenshot
 > Home page
-> ![pastebin](https://s4.uupload.ir/files/cmng_hnm6.jpg)
+> ![pastebin](https://s4.uupload.ir/files/1_5yj.png)
 
 > Logout
-> ![pastebin](https://s4.uupload.ir/files/logout_hg8g.jpg)
+> ![pastebin](https://s4.uupload.ir/files/3_bn4c.png)
 
 > Login
-> ![pastebin](https://s4.uupload.ir/files/singin_fzf7.jpg)
+> ![pastebin](https://s4.uupload.ir/files/4_p4z6.png)
 
 > Singup
-> ![pastebin](https://s4.uupload.ir/files/singup_8xe.jpg)
+> ![pastebin](https://s4.uupload.ir/files/5_ac24.png)
 
 > Adding Text page
-> ![pastebin](https://s4.uupload.ir/files/addtext_xku.jpg)
+> ![pastebin](https://s4.uupload.ir/files/2_zmiv.png)
