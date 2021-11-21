@@ -58,28 +58,28 @@
         </nav>
         
         <center>
-        <h1 style="color: white; margin-top: 0%;">ثبت نام</h1>
+        <h1 style="color: white; margin-top: 0%;">Singup</h1>
         <form method="POST" class="row g-3 col-8 col-xl-4">
             {% csrf_token %}
             <!-- <p>username</p> -->
-            <input placeholder="نام کاربری" type="text" name="username" class="form-control">
+            <input placeholder="username" type="text" name="username" class="form-control">
 
             <!-- <p>email</p> -->
-            <input placeholder="ایمیل" type="text" name="email" class="form-control">
+            <input placeholder="email" type="text" name="email" class="form-control">
 
             <!-- <p>password</p> -->
-            <input placeholder="رمز عبور" type="password" name="password" class="form-control">
+            <input placeholder="password" type="password" name="password" class="form-control">
 
             <!-- <p>re-enter password</p> -->
-            <input placeholder="رمز عبور مجدد" type="password" name="repassword" class="form-control">
+            <input placeholder="re-enter password" type="password" name="repassword" class="form-control">
 
             <br><br>
-            <button style="font-size: 25px;" class="btn btn-warning" type="submit">ثبت نام</button>
+            <button style="font-size: 25px;" class="btn btn-warning" type="submit">Singup</button>
         </form>
         
         <a href="/accounts/login" class="btn btn-dark">
             <h3 style="color: white;">
-                همچنان اکانت دارید ؟ وارد شوید
+                Already have account ? Login
             </h3>
         </a>
         </center>
