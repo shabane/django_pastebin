@@ -1,0 +1,8 @@
+*.html linguist-detectable=false
+*.html linguist-documentation=false
+
+*.css linguist-detectable=false
+*.css linguist-documentation=false
+
+*.js linguist-detectable=false
+*.js linguist-documentation=false
